@@ -1,0 +1,45 @@
+.cart{
+    position: relative;
+    cursor: pointer;
+}
+
+
+.cart i{
+    color: #FF5617;
+    font-size: 20px;
+}
+
+
+.cart p {
+    background-color: #f00;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 800;
+    position: absolute;
+    left: 15px;
+    bottom: -5px;
+    animation-name: cartAnimation;
+    animation-duration: .8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite
+}
+
+@keyframes cartAnimation{
+    0% {
+
+        bottom: -5px
+    }
+    50%{
+
+        bottom: 0; 
+    }
+    100%{
+        bottom: -5px;
+    }
+}
+
