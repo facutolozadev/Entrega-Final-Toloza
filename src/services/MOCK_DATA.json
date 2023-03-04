@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "name": "Short con calza",
+        "price": 6500,
+        "img": "https://media.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/s/h/short-con-calza-nike-running-tempo-luxe-mujer-negro-510020cz9574010-1.jpg",
+        "category": "pants",
+        "sales": 23,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 2,
+        "name": "Termica blanca",
+        "price": 5500,
+        "img": "https://d3ugyf2ht6aenh.cloudfront.net/stores/339/608/products/remera-termica-blanca1-cfc6576bd21fdd15c816548787935890-1024-1024.webp",
+        "category": "T-shirts",
+        "sales": 5,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 3,
+        "name": "Remera mangas cortas Under Armour",
+        "price": 3500,
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEVjxrrEIzOwm3Lvh1m_rhspcVe6l4w6GwPw&usqp=CAU",
+        "category": "T-shirts",
+        "sales": 10,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 4,
+        "name": "Medias largas nike blancas",
+        "price": 1500,
+        "img": "https://www.digitalsport.com.ar/files/products/5d542e7f94ae7-466084-500x500.jpg",
+        "category": "socks",
+        "sales": 15,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 5,
+        "name": "Short rojo",
+        "price": 1500,
+        "img": "https://http2.mlstatic.com/D_NQ_NP_610738-MLA51672444870_092022-O.jpg",
+        "category": "pants",
+        "sales": 12,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 6,
+        "name": "Pantalones largos under armour",
+        "price": 1500,
+        "img": "https://i.pinimg.com/736x/ec/6f/01/ec6f012101c2a21c90e21e049f202cd8.jpg",
+        "category": "pants",
+        "sales": 5,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 7,
+        "name": "Medias largas adidas blancas",
+        "price": 1500,
+        "img": "https://redsport.vteximg.com.br/arquivos/ids/1050166-1000-1000/GA050021489.jpg?v=637342449669400000",
+        "category": "socks",
+        "sales": 8,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 8,
+        "name": "Remera de entrenamiento roja",
+        "price": 1500,
+        "img": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dw09aed4f5/products/UA_1369743-664/UA_1369743-664-1.JPG",
+        "category": "socks",
+        "sales": 17,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 9,
+        "name": "Musculosa blanca básica",
+        "price": 1500,
+        "img": "https://i.ebayimg.com/images/g/U78AAOSwbsBXpb8V/s-l500.jpg",
+        "category": "tankTop",
+        "sales": 29,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    },
+    {
+        "id": 10,
+        "name": "Pantalones AFA selección",
+        "price": 1500,
+        "img": "https://media.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/p/a/pantalon-de-argentina-adidas-entrenamiento-negro-29123714-100020fh8580001-1.jpg",
+        "category": "pants",
+        "sales": 32,
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+    }
+]

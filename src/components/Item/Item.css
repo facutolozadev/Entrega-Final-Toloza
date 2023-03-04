@@ -1,0 +1,29 @@
+.product{
+    width: 300px;
+    margin: 1rem;
+    box-shadow: 3px 5px 6px -3px rgba(0,0,0,0.75);
+    position: relative;
+    height: 400px;
+    cursor: pointer;
+    transition: .8s;
+}
+
+.product__info{
+    background-color: #FF5617;
+    color: #fff;
+    height:80px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    bottom: 0;
+    padding: 1rem;
+    text-align: left;
+}
+
+.product__info h3{
+    font-size: 15px;
+    
+}

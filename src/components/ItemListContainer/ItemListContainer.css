@@ -1,5 +1,37 @@
-.container{
-    width: 100%;
+.products__page{
+    width:100%;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.products{
+    margin-top: 6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+.product:hover{
+    transform: scale(1.025);
+}
+
+
+.product h3{
+    font-size: 20px;
+}
+
+.product img{
+    width: 100%;
+}
+
+@media screen and (min-width: 768px){
+    .products{
+        width: 70%;
+    }
+
 }
