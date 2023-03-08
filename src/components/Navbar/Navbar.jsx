@@ -20,16 +20,13 @@ const Navbar = () => {
         <div className="nav__burger-and-cart-container">
         <ul className={`nav__ul ${ isOpened  ? "active" : ""}`}>
             <li className="nav__ul-li">
-                <a href="#">Pantalones</a>
+                <Link to="/category/pants" href="#">Pantalones</Link>
             </li>
             <li className="nav__ul-li">
-                <a href="#">Remeras</a>
+                <Link to="/category/T-shirts">Remeras</Link>
             </li>
             <li className="nav__ul-li">
-                <a href="#">Shorts</a>
-            </li>
-            <li className="nav__ul-li">
-                <a href="#">Medias</a>
+                <Link to="/category/socks">Medias</Link>
             </li>
         </ul>
           <CartWidget/>

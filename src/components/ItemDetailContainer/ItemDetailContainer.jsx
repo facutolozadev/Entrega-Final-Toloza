@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { pedirDatos } from '../../helpers/pedirDatos'
 import {useParams} from 'react-router-dom'
-import './ItemDetail.css'
+import './ItemDetailContainer.css'
+import ItemDetail from './ItemDetail/ItemDetail'
 
-function ItemDetail() {
+function ItemDetailContainer() {
 
   const params = useParams()
-
+ 
    
   const [detail, setDetail] = useState([])
   const [loading, setLoading] = useState(true)
@@ -16,28 +17,20 @@ function ItemDetail() {
     .then(res => setTimeout(() => {
       setDetail(res.find(item => item.id === parseInt(params.id)))
       setLoading(false)
-    }, 2000))    
-},[])
+    }, 1000))   
+},[params])
 
  
   return (
-    <div className="item__detail">
+    <div className="item__detail-container">
       {loading ? (
         <h3>cargando...</h3>
       ):(
-        <>
-        <img src={detail.img} alt={detail.name} />
-        <div className="item__price-and-title">
-          <h2>{detail.name}</h2>
-          <h4>${detail.price}</h4>
-          <button className="item__add-button">Añadir al carrito</button>
-          <p className="item__description">{detail.description}</p>
-        </div>
-      </>
+       <ItemDetail detail={detail}/>
       ) 
       }
     </div>
   )
 }
 
-export default ItemDetail
+export default ItemDetailContainer

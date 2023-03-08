@@ -1,0 +1,28 @@
+.item__detail-container{
+    margin-top: 180px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+
+@media screen and (min-width: 768px){
+    .item__detail-container{
+        flex-direction: row;
+        margin-top: 300px;
+        gap: 3rem;
+    }
+
+    .item__detail-container img{
+        width: 500px;
+    }
+
+    .item__price-and-title h2{
+        font-size: 20px;
+    }
+}
