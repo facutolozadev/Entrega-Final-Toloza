@@ -1,4 +1,4 @@
-.products{
+.products {
     margin-top: 6rem;
     display: flex;
     flex-wrap: wrap;
@@ -7,15 +7,15 @@
 
 
 
-.product:hover{
+.product:hover {
     transform: scale(1.025);
 }
 
 
-.product h3{
+.product h3 {
     font-size: 20px;
 }
 
-.product img{
+.product img {
     width: 100%;
 }

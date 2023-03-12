@@ -6,8 +6,8 @@ const CartWidget = () => {
 
   return (
     <div className="cart">
-        <i className="fa-solid fa-cart-shopping"></i>
-        <p>1</p>
+      <i className="fa-solid fa-cart-shopping"></i>
+      <p>1</p>
     </div>
   )
 }

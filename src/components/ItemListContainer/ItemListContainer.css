@@ -1,5 +1,5 @@
-.products__page{
-    width:100%;
+.products__page {
+    width: 100%;
     text-align: center;
     margin-top: 140px;
     display: flex;
@@ -9,8 +9,8 @@
 
 
 
-@media screen and (min-width: 768px){
-    .products{
+@media screen and (min-width: 768px) {
+    .products {
         width: 70%;
     }
 
