@@ -27,7 +27,7 @@ const ItemListContainer = () => {
         })
 
 
-    }, 1000)
+    }, 200)
   }, [categoryId])
 
 

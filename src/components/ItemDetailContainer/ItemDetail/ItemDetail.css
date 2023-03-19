@@ -23,15 +23,30 @@
     font-weight: bold;
     cursor: pointer;
     width: 250px;
-    transition: all .3s;
+    transition: all .5s;
 }
 
 .item__add-button:hover{
-    transform: scale(1.025)
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .item__description{
     color: #000;
     text-align: left;
     width: 250px;
+}
+
+
+.terminar__compra{
+    background: #FF5617;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 800;
+    transition: all .5s;
+    text-align: center;
+}
+
+.terminar__compra:hover{
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }

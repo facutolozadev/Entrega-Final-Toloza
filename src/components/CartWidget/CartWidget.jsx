@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './CartWidget.css'
-
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
 const CartWidget = () => {
 
+  const { cart } = useContext(CartContext)
+
   return (
-    <div className="cart">
+    <Link to="/cart" className="cart">
       <i className="fa-solid fa-cart-shopping"></i>
-      <p>1</p>
-    </div>
+      {
+        cart.length > 0 && <p>{cart.reduce((acc, prod) => acc + prod.cantidad, 0)}</p>
+      }
+    </Link>
   )
 }
 

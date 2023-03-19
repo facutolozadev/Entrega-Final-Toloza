@@ -8,7 +8,6 @@ function ItemDetailContainer() {
 
   const params = useParams()
 
-
   const [detail, setDetail] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -17,7 +16,7 @@ function ItemDetailContainer() {
       .then(res => setTimeout(() => {
         setDetail(res.find(item => item.id === parseInt(params.id)))
         setLoading(false)
-      }, 1000))
+      }, 200))
   }, [params])
 
 
