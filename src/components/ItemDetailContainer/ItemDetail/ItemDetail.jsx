@@ -68,7 +68,7 @@ function ItemDetail({ detail }) {
                     </div>
                   )
                 }
-                <p className="item__stock">Stock disponible: {sizeStock.stock}</p>
+                <p className="item__stock">Stock disponible: {detail.size ? sizeStock.stock : detail.stock}</p>
                 <button onClick={handleAddToCart} className="item__add-button">Añadir al carrito</button>
                 <p className="item__description">{detail.description}</p>
               </>
