@@ -3,6 +3,9 @@ import { pedirDatos } from '../../helpers/pedirDatos'
 import { useParams } from 'react-router-dom'
 import './ItemDetailContainer.css'
 import ItemDetail from './ItemDetail/ItemDetail'
+import { db } from '../../firebase/config'
+import { doc, getDoc} from 'firebase/firestore'
+
 
 function ItemDetailContainer() {
 
@@ -12,14 +15,18 @@ function ItemDetailContainer() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    pedirDatos()
-      .then(res => setTimeout(() => {
-        setDetail(res.find(item => item.id === parseInt(params.id)))
+    const docRef = doc(db, "productos", params.id)
+
+    getDoc(docRef)
+      .then((res) => {
+        const doc = {...res.data(), id: res.id}
+        setDetail(doc)
         setLoading(false)
-      }, 200))
+      })
+      
   }, [params])
 
-
+  console.log(detail)
   return (
     <div className="item__detail-container">
       {loading ? (

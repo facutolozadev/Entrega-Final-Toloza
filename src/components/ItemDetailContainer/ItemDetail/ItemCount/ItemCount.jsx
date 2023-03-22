@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useFetcher } from 'react-router-dom'
 
 import './ItemCount.css'
 
 function ItemCount({ max, cantidad, setCantidad }) {
 
-    
+    useEffect(() => {
+        setCantidad(1)
+    }, [max])
 
     const handleSumar = () => {
         cantidad < max && setCantidad(cantidad + 1)

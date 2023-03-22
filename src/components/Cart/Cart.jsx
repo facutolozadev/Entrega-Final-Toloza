@@ -20,8 +20,10 @@ function Cart() {
                             ))
                         }
 
-                        <h2>Total: ${cart.reduce((acc, prod) => acc + prod.price * prod.cantidad, 0)}</h2>
-                        
+                        <div className="cart__compra-container">
+                            <h2>Total: ${cart.reduce((acc, prod) => acc + prod.price * prod.cantidad, 0)}</h2>
+                            <button>Realizar compra</button>
+                        </div>
                     </div>
                 ) : (
                     <div className="cart__error-container">

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './ItemListContainer.css'
-import { pedirDatos } from '../../helpers/pedirDatos'
 import ItemList from './ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../firebase/config'
 
 const ItemListContainer = () => {
 
@@ -15,24 +15,28 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    setTimeout(() => {
-      pedirDatos()
-        .then(response => {
-          if (!categoryId) {
-            setProductos(response)
-          } else {
-            setProductos(response.filter((prod) => prod.category === categoryId))
-          }
-          setIsLoading(false)
+
+    //1 - referencia (sync)
+    const productosRef = collection(db, "productos")
+    const q = categoryId
+              ? query(productosRef, where("category", "==", categoryId))
+              : productosRef
+    
+    //2 - pedir esa referencia (async)
+    getDocs(q)
+      .then((res) => {
+        const docs = res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id }
         })
 
+        console.log(docs)
 
-    }, 200)
+        setProductos(docs)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }, [categoryId])
-
-
-
-
 
   return (
     <div className="products__page">
@@ -41,7 +45,7 @@ const ItemListContainer = () => {
           <h3>Cargando...</h3>
         ) : (
           <>
-            <h1>{ categoryId ? categoryId.charAt(0).toUpperCase() + categoryId.slice(1) : "Nuestros productos"}</h1>
+            <h1>{categoryId ? categoryId.charAt(0).toUpperCase() + categoryId.slice(1) : "Nuestros productos"}</h1>
             <ItemList productos={productos} />
           </>
         )
