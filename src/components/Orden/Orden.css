@@ -1,0 +1,29 @@
+.orden__container{
+    padding-top: 8rem;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100%;
+    background: #ccc;
+}
+
+.orden{
+    
+    gap: 2rem;
+   
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 8rem;
+}
+
+.orden ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+

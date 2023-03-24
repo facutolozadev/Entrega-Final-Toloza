@@ -11,8 +11,9 @@ html, body{
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
-p, i{
-  color: white
+
+
+
+ul, li {
+  list-style: none;
 }
-
-

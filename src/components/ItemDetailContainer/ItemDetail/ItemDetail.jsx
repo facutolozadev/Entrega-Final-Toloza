@@ -8,23 +8,21 @@ function ItemDetail({ detail }) {
 
 
 
-  const { addToCart, isInCart } = useContext(CartContext)
+  const { addToCart, isInCart, chooseSize, selectedSize, sizeStock, setSizeStock } = useContext(CartContext)
   const [cantidad, setCantidad] = useState(1)
-  const [selectedSize, setSelectedSize] = useState("S")
-  const [sizeStock, setSizeStock] = useState({})
+  
+  
 
   const handleAddToCart = () => {
     addToCart({ ...detail, cantidad })
   }
 
-  const handleChooseSize = (e) => {
-    setSelectedSize(e.target.value)
-  }
+ 
 
-  useEffect(() => {
-    detail.size &&
-    detail.size.find((item) => item.sizeLetter === selectedSize && setSizeStock(item))
-  }, [selectedSize])
+  // useEffect(() => {
+  //   detail.size &&
+  //   detail.size.find((item) => item.letterSize === selectedSize && setSizeStock(item))
+  // }, [selectedSize])
 
   return (
     <>
@@ -36,19 +34,24 @@ function ItemDetail({ detail }) {
         {
           isInCart(detail.id)
             ? (
+              <div>
               <Link className="terminar__compra" to="/cart">Terminar mi compra</Link>
+              
+              </div>
 
             ) : (
               <>
                 <ItemCount
-                  max={detail.size ? sizeStock.stock : detail.stock}
+                  max={detail.stock}
                   cantidad={cantidad}
                   setCantidad={setCantidad} />
-                {
+
+                {/*Vista para los talles (a implementar)*/}
+                {/* {
                   detail.size && (
                     <div className="item__select-container">
                       <p>Seleccione su talle:</p>
-                      <select className="item__select" onChange={handleChooseSize} value={selectedSize}>
+                      <select className="item__select" onChange={chooseSize} value={selectedSize}>
                         <option
                           value="S"
                         >
@@ -67,7 +70,7 @@ function ItemDetail({ detail }) {
                       </select>
                     </div>
                   )
-                }
+                } */}
                 <p className="item__stock">Stock disponible: {detail.size ? sizeStock.stock : detail.stock}</p>
                 <button onClick={handleAddToCart} className="item__add-button">Añadir al carrito</button>
                 <p className="item__description">{detail.description}</p>

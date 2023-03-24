@@ -26,7 +26,7 @@ function ItemDetailContainer() {
       
   }, [params])
 
-  console.log(detail)
+  // console.log(detail)
   return (
     <div className="item__detail-container">
       {loading ? (

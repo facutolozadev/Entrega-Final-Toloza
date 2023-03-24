@@ -1,0 +1,35 @@
+.checkout__form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 60px;
+    background: #fff;
+}
+
+
+.checkout__form-input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.checkout__form-input-container label{
+    font-size: 14px;
+}
+
+.checkout__form input{
+   width: 250px;
+   height: 50px;
+   padding: 15px;
+   font-size: 15px
+}
+
+.checkout__terminar-compra{
+    background: #FF5617;
+    border: none;
+    padding: 15px 0px 15px 0px; 
+    color: #fff;
+    font-weight: 600;
+    cursor:pointer;
+
+}

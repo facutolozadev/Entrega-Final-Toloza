@@ -3,6 +3,8 @@
     padding-top: 8rem;
     text-align: center;
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
     padding-bottom: 8rem;
@@ -46,7 +48,7 @@
     gap: 2rem;
 }
 
-.cart__compra-container button{
+.cart__realizar-compra{
     background-color: #FF5617;
     border: none;
     padding: 10px 5px;
@@ -55,6 +57,16 @@
     font-weight: 600;
     transition: all .5s;
     cursor: pointer;
+}
+
+.cart__vaciar{
+    background: #f44;
+    border: none;
+    padding: 10px 5px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .5s;
 }
 
 
