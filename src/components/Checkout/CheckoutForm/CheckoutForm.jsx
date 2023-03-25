@@ -15,8 +15,7 @@ function CheckoutForm({ cart, calcTotalPrice }) {
 
     const onSubmit = (data) => {
         const orden = {
-            id: uuid(),
-            cliente: [{...data}],
+            cliente: data,
             productos: cart.map((prod) => ({id: prod.id, price: prod.price, cantidad: prod.cantidad, name:prod.name})),
             total: calcTotalPrice(),
             fecha: new Date().toLocaleDateString()
@@ -25,8 +24,11 @@ function CheckoutForm({ cart, calcTotalPrice }) {
 
         const ordersRef = collection(db, 'orders')
         addDoc(ordersRef, orden)
-       
-        navigate(`/checkout/orden/${orden.id}`)
+        .then((doc) => {
+            navigate(`/checkout/orden/${doc.id}`)
+        })
+        
+        
     
 
         

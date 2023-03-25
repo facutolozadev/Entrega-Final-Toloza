@@ -8,11 +8,12 @@
     min-height: 100vh;
     height: 100%;
     background: #ccc;
+    padding-bottom: 8rem;
 }
 
 .orden{
     
-    gap: 2rem;
+    gap: 5rem;
    
     background: #fff;
     display: flex;
@@ -24,6 +25,6 @@
 .orden ul {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2rem;
 }
 
