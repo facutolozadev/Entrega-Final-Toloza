@@ -1,17 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Navigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext'
 import './Checkout.css';
 import CheckoutForm from './CheckoutForm/CheckoutForm';
 
-
 function Checkout() {
 
-  const { cart, calcTotalPrice } = useContext(CartContext)
+  const [isLoading, setIsLoading] = useState(false)
+  const { cart, calcTotalPrice, emptyCart } = useContext(CartContext)
 
-  if(cart.length === 0) {
+  if(cart.length === 0 && !isLoading) {
     return <Navigate to="/" />
   }
+
+  if(isLoading) {
+    return (
+        <div className="checkout"><h2>Generando orden...</h2></div>    
+    )
+}
 
   return (
    
@@ -34,7 +40,12 @@ function Checkout() {
           }
           <h3>Total a pagar: ${calcTotalPrice()}</h3>
         </div>
-        <CheckoutForm cart={cart} calcTotalPrice={calcTotalPrice}/>
+        <CheckoutForm 
+        setIsLoading={setIsLoading}
+        cart={cart} 
+        calcTotalPrice={calcTotalPrice}
+        emptyCart={emptyCart}
+        />
       </div>
     
   )

@@ -1,38 +1,36 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import uuid from 'react-uuid'
 import './CheckoutForm.css'
-import { collection, addDoc} from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../../../firebase/config'
 
-function CheckoutForm({ cart, calcTotalPrice }) {
+function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart }) {
 
-    const [orderId, setOrderId] = useState(null)
+
+
     const { formState: { errors }, register, handleSubmit, watch } = useForm()
+
 
     const navigate = useNavigate()
 
     const onSubmit = (data) => {
+
+        setIsLoading(true)
+        emptyCart()
+
         const orden = {
             cliente: data,
-            productos: cart.map((prod) => ({id: prod.id, price: prod.price, cantidad: prod.cantidad, name:prod.name})),
+            productos: cart.map((prod) => ({ id: prod.id, price: prod.price, cantidad: prod.cantidad, name: prod.name })),
             total: calcTotalPrice(),
             fecha: new Date().toLocaleDateString()
         }
-        // console.log(orden)
 
         const ordersRef = collection(db, 'orders')
         addDoc(ordersRef, orden)
-        .then((doc) => {
-            navigate(`/checkout/orden/${doc.id}`)
-        })
-        
-        
-    
-
-        
-        
+            .then((doc) => {
+                navigate(`/checkout/order/${doc.id}`)
+            })
 
     }
 
@@ -44,9 +42,10 @@ function CheckoutForm({ cart, calcTotalPrice }) {
     }
 
 
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="checkout__form">
-            
+
             <div className="checkout__form-input-container">
                 <input
                     placeholder="Nombre..."
@@ -100,7 +99,7 @@ function CheckoutForm({ cart, calcTotalPrice }) {
                         validate: mailValidator
                     })}
                 />
-                 {errors.mail2?.type === 'validate' && <p style={{ color: 'red', fontSize: "14px" }}>Los mails no coinciden</p>}
+                {errors.mail2?.type === 'validate' && <p style={{ color: 'red', fontSize: "14px" }}>Los mails no coinciden</p>}
             </div>
 
 

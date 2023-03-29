@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { pedirDatos } from '../../helpers/pedirDatos'
 import { useParams } from 'react-router-dom'
 import './ItemDetailContainer.css'
 import ItemDetail from './ItemDetail/ItemDetail'

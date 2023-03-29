@@ -1,32 +1,29 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import './Orden.css'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../../firebase/config'
-import { CartContext } from '../../context/CartContext'
+import { useParams } from 'react-router-dom'
 
 
 function Orden() {
 
-    const { id } = useParams()
 
-    const { emptyCart } = useContext(CartContext)
+    const { id } = useParams()
 
     const [orderInfo, setOrderInfo] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    
+
+
     useEffect(() => {
         const docRef = doc(db, 'orders', id)
         getDoc(docRef)
-        .then((res) => {
-            setIsLoading(false)
-            setOrderInfo({...res.data(), id: res.id})
-            emptyCart()
-        })
+            .then((res) => {
+                setOrderInfo({ ...res.data(), id: res.id })
+                setIsLoading(false)
+            })
     }, [])
 
-
-    if(isLoading){
+    if (isLoading) {
         return (
             <div className="orden__container">
                 <h2>Cargando...</h2>
@@ -48,7 +45,7 @@ function Orden() {
                 <ul>
                     <strong>Productos:</strong>
                     {
-                        orderInfo.productos.map((producto) =><li key={producto.id}> - {producto.name} x({producto.cantidad})</li>)
+                        orderInfo.productos.map((producto) => <li key={producto.id}> - {producto.name} x({producto.cantidad})</li>)
                     }
                 </ul>
                 <p><strong>Total de compra:</strong> ${orderInfo.total}</p>

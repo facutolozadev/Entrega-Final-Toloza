@@ -14,23 +14,19 @@ const ItemListContainer = () => {
 
 
   useEffect(() => {
+
     setIsLoading(true)
 
-    //1 - referencia (sync)
     const productosRef = collection(db, "productos")
     const q = categoryId
-              ? query(productosRef, where("category", "==", categoryId))
-              : productosRef
-    
-    //2 - pedir esa referencia (async)
+      ? query(productosRef, where("category", "==", categoryId))
+      : productosRef
+
     getDocs(q)
       .then((res) => {
         const docs = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id }
         })
-
-        console.log(docs)
-
         setProductos(docs)
       })
       .finally(() => {
