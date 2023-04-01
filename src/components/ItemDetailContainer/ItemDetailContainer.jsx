@@ -1,35 +1,43 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './ItemDetailContainer.css'
 import ItemDetail from './ItemDetail/ItemDetail'
 import { db } from '../../firebase/config'
 import { doc, getDoc} from 'firebase/firestore'
+import Spinner from '../Spinner/Spinner'
 
 
 function ItemDetailContainer() {
 
-  const params = useParams()
+  const { id } = useParams()
+  const navigate = useNavigate();
+
 
   const [detail, setDetail] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const docRef = doc(db, "productos", params.id)
+    const docRef = doc(db, "productos", id)
 
     getDoc(docRef)
       .then((res) => {
+        if(!res.data()) {
+          navigate('/')
+        }
         const doc = {...res.data(), id: res.id}
         setDetail(doc)
         setLoading(false)
-      })
+        
+      })  
       
-  }, [params])
+  }, [id])
 
-  // console.log(detail)
+ 
+  
   return (
     <div className="item__detail-container">
       {loading ? (
-        <h3>cargando...</h3>
+        <Spinner message={"Cargando"}/>
       ) : (
         <ItemDetail detail={detail} />
       )

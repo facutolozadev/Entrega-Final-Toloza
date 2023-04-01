@@ -10,14 +10,14 @@ function ItemDetail({ detail }) {
 
   const { addToCart, isInCart, chooseSize, selectedSize, sizeStock, setSizeStock } = useContext(CartContext)
   const [cantidad, setCantidad] = useState(1)
-  
-  
+
+
 
   const handleAddToCart = () => {
     addToCart({ ...detail, cantidad })
   }
 
- 
+
 
   // useEffect(() => {
   //   detail.size &&
@@ -35,45 +35,29 @@ function ItemDetail({ detail }) {
           isInCart(detail.id)
             ? (
               <div>
-              <Link className="terminar__compra" to="/cart">Terminar mi compra</Link>
-              
+                <Link className="terminar__compra" to="/cart">Terminar mi compra</Link>
+
               </div>
 
             ) : (
               <>
-                <ItemCount
-                  max={detail.stock}
-                  cantidad={cantidad}
-                  setCantidad={setCantidad} />
+                {
+                  detail.stock > 0
+                    ?
+                    (
+                      <>
+                        <ItemCount
+                          max={detail.stock}
+                          cantidad={cantidad}
+                          setCantidad={setCantidad} />
 
-                {/*Vista para los talles (a implementar)*/}
-                {/* {
-                  detail.size && (
-                    <div className="item__select-container">
-                      <p>Seleccione su talle:</p>
-                      <select className="item__select" onChange={chooseSize} value={selectedSize}>
-                        <option
-                          value="S"
-                        >
-                          S
-                        </option>
-                        <option
-                          value="M"
-                        >
-                          M
-                        </option>
-                        <option
-                          value="XL"
-                        >
-                          XL
-                        </option>
-                      </select>
-                    </div>
-                  )
-                } */}
-                <p className="item__stock">Stock disponible: {detail.size ? sizeStock.stock : detail.stock}</p>
-                <button onClick={handleAddToCart} className="item__add-button">Añadir al carrito</button>
-                <p className="item__description">{detail.description}</p>
+                        <p className="item__stock">Stock disponible: {detail.size ? sizeStock.stock : detail.stock}</p><button onClick={handleAddToCart} className="item__add-button">Añadir al carrito</button>
+                        <p className="item__description">{detail.description}</p>
+                      </>
+                    )
+                    : <p style={{ color: "red" }}><strong>No hay stock de este producto</strong></p>
+                }
+
               </>
             )
         }

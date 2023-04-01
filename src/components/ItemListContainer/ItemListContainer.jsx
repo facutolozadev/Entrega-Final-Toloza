@@ -4,6 +4,7 @@ import ItemList from './ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../firebase/config'
+import Spinner from '../Spinner/Spinner'
 
 const ItemListContainer = () => {
 
@@ -38,7 +39,7 @@ const ItemListContainer = () => {
     <div className="products__page">
       {
         isLoading ? (
-          <h3>Cargando...</h3>
+          <Spinner message={"Cargando"}/>
         ) : (
           <>
             <h1>{categoryId ? categoryId.charAt(0).toUpperCase() + categoryId.slice(1) : "Nuestros productos"}</h1>

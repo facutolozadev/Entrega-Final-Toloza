@@ -1,24 +1,22 @@
-import React from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import './CheckoutForm.css'
-import { collection, addDoc } from 'firebase/firestore'
+import { getDocs, collection, addDoc, query, where, documentId, writeBatch } from 'firebase/firestore'
 import { db } from '../../../firebase/config'
 
-function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart }) {
+function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart, setNoStock }) {
 
 
 
     const { formState: { errors }, register, handleSubmit, watch } = useForm()
 
-
     const navigate = useNavigate()
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
 
         setIsLoading(true)
-        emptyCart()
-
+    
         const orden = {
             cliente: data,
             productos: cart.map((prod) => ({ id: prod.id, price: prod.price, cantidad: prod.cantidad, name: prod.name })),
@@ -26,11 +24,40 @@ function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart }) {
             fecha: new Date().toLocaleDateString()
         }
 
+
+        const outOfStock = []
+
+        const batch = writeBatch(db)
         const ordersRef = collection(db, 'orders')
-        addDoc(ordersRef, orden)
-            .then((doc) => {
-                navigate(`/checkout/order/${doc.id}`)
-            })
+        const productosRef = collection(db, 'productos')
+
+        const itemsRef = query(productosRef, where(documentId(), 'in', cart.map(prod => prod.id)))
+
+        const response = await getDocs(itemsRef)
+
+        response.docs.forEach((doc) => {
+            const item = cart.find(prod => prod.id === doc.id)
+
+            if (doc.data().stock >= item.cantidad) {
+                batch.update(doc.ref, {
+                    stock: doc.data().stock - item.cantidad
+                })
+            } else {
+                outOfStock.push(item)
+            }
+        })
+
+        if (outOfStock.length === 0) {
+            await batch.commit();
+
+            addDoc(ordersRef, orden)
+                .then((doc) => {
+                    navigate(`/checkout/order/${doc.id}`)
+                    emptyCart()
+                })
+        } else {
+            setNoStock(outOfStock)
+        }
 
     }
 
@@ -70,6 +97,21 @@ function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart }) {
                 />
                 {errors.apellido?.type === 'required' && <p style={{ color: 'red', fontSize: "14px" }}>Apellido es requerido</p>}
                 {errors.apellido?.type === 'minLength' && <p style={{ color: 'red', fontSize: "14px" }}>Este campo necesita mínimo 3 caracteres</p>}
+
+
+            </div>
+            <div className="checkout__form-input-container">
+                <label htmlFor="apellido">Teléfono:</label>
+                <input
+                    placeholder="Teléfono..."
+                    type="number"
+                    {...register('telefono', {
+                        required: true,
+                        minLength: 5
+                    })}
+                />
+                {errors.telefono?.type === 'required' && <p style={{ color: 'red', fontSize: "14px" }}>Teléfono es requerido</p>}
+                {errors.telefono?.type === 'minLength' && <p style={{ color: 'red', fontSize: "14px" }}>Este campo necesita mínimo 5 caracteres</p>}
 
 
             </div>

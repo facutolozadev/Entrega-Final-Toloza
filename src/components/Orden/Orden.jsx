@@ -3,6 +3,7 @@ import './Orden.css'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 import { useParams } from 'react-router-dom'
+import Spinner from '../Spinner/Spinner'
 
 
 function Orden() {
@@ -25,9 +26,7 @@ function Orden() {
 
     if (isLoading) {
         return (
-            <div className="orden__container">
-                <h2>Cargando...</h2>
-            </div>
+            <Spinner message={"Cargando"}/>
         )
     }
 
