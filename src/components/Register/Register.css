@@ -1,0 +1,81 @@
+.register__form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin-top: 6rem;
+}
+
+.register__form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255,255,255,0.13);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px rgba(8,7,16,0.6);
+    padding: 50px 60px;
+}
+
+.register__form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+.register__form label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.register__form input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid gray;
+}
+
+.register__form input::placeholder{
+    color: #555;
+    font-weight: 400;
+}
+
+.register__form button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #FF5617;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .6s;
+    border: 1px solid #FF5617;
+}
+
+.register__link{
+
+    color: #FF5617;
+    text-decoration: none;
+}
+
+.register__form button:hover{
+    background-color:#FF5617 ;
+    border: 1px solid transparent;
+    color: #fff;    
+}
+
+@media screen and (min-width: 768px) {
+    .register__form-container{
+        margin-top: 3rem;
+    }
+
+    .register__form{
+        width: 420px;
+    }
+}

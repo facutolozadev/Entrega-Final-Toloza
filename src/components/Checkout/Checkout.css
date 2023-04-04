@@ -22,3 +22,21 @@
     color: #000;
 }
 
+
+
+.checkout__logout{
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    color: #F00;
+}
+
+.checkout__sign-in{
+    background-color: #FF5617;
+    border: none;
+    color: #fff;
+    padding: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}

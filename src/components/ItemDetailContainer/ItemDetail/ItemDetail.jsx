@@ -1,5 +1,5 @@
 import './ItemDetail.css'
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../../../context/CartContext'
 import ItemCount from './ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
@@ -17,12 +17,6 @@ function ItemDetail({ detail }) {
     addToCart({ ...detail, cantidad })
   }
 
-
-
-  // useEffect(() => {
-  //   detail.size &&
-  //   detail.size.find((item) => item.letterSize === selectedSize && setSizeStock(item))
-  // }, [selectedSize])
 
   return (
     <>
@@ -51,7 +45,7 @@ function ItemDetail({ detail }) {
                           cantidad={cantidad}
                           setCantidad={setCantidad} />
 
-                        <p className="item__stock">Stock disponible: {detail.size ? sizeStock.stock : detail.stock}</p><button onClick={handleAddToCart} className="item__add-button">Añadir al carrito</button>
+                        <p className="item__stock">Stock disponible: {detail.stock}</p><button onClick={handleAddToCart} className="item__add-button">Añadir al carrito</button>
                         <p className="item__description">{detail.description}</p>
                       </>
                     )

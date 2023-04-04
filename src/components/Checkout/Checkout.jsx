@@ -4,12 +4,16 @@ import { CartContext } from '../../context/CartContext'
 import './Checkout.css';
 import CheckoutForm from './CheckoutForm/CheckoutForm';
 import Spinner from '../Spinner/Spinner';
+import { LoginContext } from '../../context/LoginContext';
 
 function Checkout() {
 
 
   const [noStock, setNoStock] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+
+  const { user, logout } = useContext(LoginContext)
+  console.log(user)
   const { cart, calcTotalPrice, emptyCart } = useContext(CartContext)
 
   if (cart.length === 0 && !isLoading) {
@@ -17,8 +21,8 @@ function Checkout() {
   }
 
 
- if(noStock.length > 0){
-  emptyCart()
+  if (noStock.length > 0) {
+    emptyCart()
 
     return (
       <div className="checkout">
@@ -31,11 +35,11 @@ function Checkout() {
         <Link to="/">Volver al inicio</Link>
       </div>
     )
- }
+  }
 
   if (isLoading) {
     return (
-      <Spinner message={"Generando orden"}/>
+      <Spinner message={"Generando orden"} />
     )
   }
 
@@ -60,13 +64,18 @@ function Checkout() {
         }
         <h3>Total a pagar: ${calcTotalPrice()}</h3>
       </div>
+
       <CheckoutForm
         setIsLoading={setIsLoading}
         cart={cart}
         calcTotalPrice={calcTotalPrice}
         emptyCart={emptyCart}
         setNoStock={setNoStock}
+        user={user}
+        logout={logout}
       />
+        
+      
     </div>
 
   )

@@ -1,11 +1,10 @@
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import './CheckoutForm.css'
 import { getDocs, collection, addDoc, query, where, documentId, writeBatch } from 'firebase/firestore'
 import { db } from '../../../firebase/config'
 
-function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart, setNoStock }) {
+function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart, setNoStock, user, logout }) {
 
 
 
@@ -16,12 +15,13 @@ function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart, setNoStoc
     const onSubmit = async (data) => {
 
         setIsLoading(true)
-    
+
         const orden = {
             cliente: data,
             productos: cart.map((prod) => ({ id: prod.id, price: prod.price, cantidad: prod.cantidad, name: prod.name })),
             total: calcTotalPrice(),
-            fecha: new Date().toLocaleDateString()
+            fecha: new Date().toLocaleDateString(),
+            loggedInfo: user ? user : null
         }
 
 
@@ -74,6 +74,7 @@ function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart, setNoStoc
         <form onSubmit={handleSubmit(onSubmit)} className="checkout__form">
 
             <div className="checkout__form-input-container">
+                <label htmlFor="nombre">Nombre:</label>
                 <input
                     placeholder="Nombre..."
                     type="text"
@@ -115,34 +116,48 @@ function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart, setNoStoc
 
 
             </div>
-            <div className="checkout__form-input-container">
-                <label htmlFor="mail">E-mail:</label>
-                <input
-                    placeholder="E-mail..."
-                    type="mail"
-                    {...register('mail', {
-                        required: true,
-                        minLength: 3,
-                        pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                        validate: mailValidator
-                    })}
-                />
-                {errors.mail?.type === 'required' && <p style={{ color: 'red', fontSize: "14px" }}>E-mail es requerido</p>}
-                {errors.mail?.type === 'pattern' && <p style={{ color: 'red', fontSize: "14px" }}>Formato no válido</p>}
-                {errors.mail?.type === 'validate' && <p style={{ color: 'red', fontSize: "14px" }}>Los mails no coinciden</p>}
 
-            </div>
-            <div className="checkout__form-input-container">
-                <label htmlFor="mail-2">Repita su e-mail:</label>
-                <input
-                    placeholder="E-mail..."
-                    type="text"
-                    {...register('mail2', {
-                        validate: mailValidator
-                    })}
-                />
-                {errors.mail2?.type === 'validate' && <p style={{ color: 'red', fontSize: "14px" }}>Los mails no coinciden</p>}
-            </div>
+            {
+                user.logged ? (
+                    <div>
+                        <p style={{ width: '150px', marginBottom: '50px' }}>Estás comprando con la cuenta de {user.email}</p>
+
+                        <button className="checkout__logout" type="button" onClick={logout}>Salir de la cuenta</button>
+
+                    </div>
+                ) : (
+                    <>
+                        <div className="checkout__form-input-container">
+                            <label htmlFor="mail">E-mail:</label>
+                            <input
+                                placeholder="E-mail..."
+                                type="mail"
+                                {...register('mail', {
+                                    required: true,
+                                    minLength: 3,
+                                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                                    validate: mailValidator
+                                })}
+                            />
+                            {errors.mail?.type === 'required' && <p style={{ color: 'red', fontSize: "14px" }}>E-mail es requerido</p>}
+                            {errors.mail?.type === 'pattern' && <p style={{ color: 'red', fontSize: "14px" }}>Formato no válido</p>}
+                            {errors.mail?.type === 'validate' && <p style={{ color: 'red', fontSize: "14px" }}>Los mails no coinciden</p>}
+
+                        </div>
+                        <div className="checkout__form-input-container">
+                            <label htmlFor="mail-2">Repita su e-mail:</label>
+                            <input
+                                placeholder="E-mail..."
+                                type="text"
+                                {...register('mail2', {
+                                    validate: mailValidator
+                                })}
+                            />
+                            {errors.mail2?.type === 'validate' && <p style={{ color: 'red', fontSize: "14px" }}>Los mails no coinciden</p>}
+                        </div>
+                    </>
+                )
+            }
 
 
             <button className="checkout__terminar-compra" type="submit">Terminar compra</button>

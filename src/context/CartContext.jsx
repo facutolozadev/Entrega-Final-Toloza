@@ -7,8 +7,6 @@ const init = JSON.parse(localStorage.getItem('carrito')) || [];
 export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState(init)
-    const [selectedSize, setSelectedSize] = useState("S")
-    const [sizeStock, setSizeStock] = useState({})
     
     const isInCart = (id) => {
         // console.log(id)
@@ -42,12 +40,6 @@ export const CartProvider = ({ children }) => {
         setCart(cart.filter((prod) => prod.id !== item.id))
     }
 
-
-
-    const chooseSize = (e) => {
-        setSelectedSize(e.target.value)
-    }
-
     const emptyCart = () => {
         setCart([])
     }
@@ -63,10 +55,6 @@ export const CartProvider = ({ children }) => {
             addToCart,
             isInCart,
             removeFromCart,
-            chooseSize,
-            selectedSize,
-            sizeStock,
-            setSizeStock,
             emptyCart,
             calcTotalProducts,
             calcTotalPrice,

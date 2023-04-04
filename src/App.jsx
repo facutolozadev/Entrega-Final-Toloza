@@ -7,10 +7,14 @@ import Cart from './components/Cart/Cart'
 import { CartProvider } from './context/CartContext'
 import Checkout from './components/Checkout/Checkout'
 import Orden from './components/Orden/Orden'
+import LoginProvider from './context/LoginContext'
+import Register from './components/Register/Register'
+import Login from './components/Login/Login'
 
 function App() {
 
   return (
+    <LoginProvider>
     <CartProvider>
     <div className="App">
       <BrowserRouter>
@@ -24,11 +28,14 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/checkout" element={<Checkout />} /> 
           <Route path="/checkout/order/:id" element={<Orden/>}/>
+          <Route path="/register" element={<Register/>} /> 
+          <Route path="/login" element={<Login/>} /> 
         </Routes>
 
       </BrowserRouter>
     </div>
     </CartProvider>
+    </LoginProvider>
   )
 }
 

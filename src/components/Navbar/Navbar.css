@@ -12,10 +12,40 @@
     width: 100%;
 }
 
+.nav__logo-and-categories-container{
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+
 .nav__logo{
     height: 70px;
 }
 
+.login, .sing-in{
+    text-decoration: none;
+}
+
+.sing-in{
+    color: #000;
+}
+
+.login{
+    background-color: #FF5617;
+    padding: 6px;
+    color: #fff;
+}
+
+.nav__logout{
+    font-size: 23px;
+    color: #FF5617;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.nav__logout:hover{
+    color: #EE4600;
+}
 
 .nav__ul{
     position: absolute;
@@ -80,10 +110,19 @@
     .nav__ul{
         position: initial;
         margin: 0;
-        display: flex;
-        
+        display: flex;        
         gap: 3rem;
-        
+    }
+
+    .nav__logo-and-login-container{     
+        gap: 40px
+    }
+}
+
+
+@media screen and (max-width: 480px){
+    .nav__logo{
+        display: none;
     }
 }
 

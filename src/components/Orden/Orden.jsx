@@ -5,7 +5,6 @@ import { db } from '../../firebase/config'
 import { useParams } from 'react-router-dom'
 import Spinner from '../Spinner/Spinner'
 
-
 function Orden() {
 
 
@@ -26,7 +25,7 @@ function Orden() {
 
     if (isLoading) {
         return (
-            <Spinner message={"Cargando"}/>
+            <Spinner message={"Cargando"} />
         )
     }
 
@@ -39,7 +38,7 @@ function Orden() {
                     <strong>Datos del cliente: </strong>
                     <li><strong>Nombre: </strong> {orderInfo.cliente.nombre}</li>
                     <li><strong>Apellido: </strong> {orderInfo.cliente.apellido}</li>
-                    <li><strong>Dirección de correo: </strong> {orderInfo.cliente.mail} </li>
+                    <li><strong>Dirección de correo: </strong> {orderInfo.cliente.mail || orderInfo.loggedInfo.email} </li>
                 </ul>
                 <ul>
                     <strong>Productos:</strong>
@@ -52,6 +51,7 @@ function Orden() {
                 <h2>Gracias por comprar en Zdravý fitness!</h2>
             </div>
         </div>
+       
     )
 }
 
