@@ -17,18 +17,18 @@ function Cart() {
 
                         {
                             cart.map((item) => (
-                                <CartItem key={item.id} item={item} 
+                                <CartItem key={item.id} item={item}
                                 />
                             ))
                         }
 
                         <div className="cart__compra-container">
                             <h2>Total: ${calcTotalPrice()}</h2>
-                            <Link 
-                            to="/checkout"
-                            className="cart__realizar-compra">Realizar compra</Link>
-                            <button 
-                            onClick={emptyCart}className="cart__vaciar">
+                            <Link
+                                to="/checkout"
+                                className="cart__realizar-compra">Realizar compra</Link>
+                            <button
+                                onClick={emptyCart} className="cart__vaciar">
                                 Vaciar carrito
                             </button>
                         </div>

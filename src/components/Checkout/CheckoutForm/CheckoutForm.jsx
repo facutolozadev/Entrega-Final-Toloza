@@ -6,8 +6,6 @@ import { db } from '../../../firebase/config'
 
 function CheckoutForm({ cart, calcTotalPrice, setIsLoading, emptyCart, setNoStock, user, logout }) {
 
-
-
     const { formState: { errors }, register, handleSubmit, watch } = useForm()
 
     const navigate = useNavigate()

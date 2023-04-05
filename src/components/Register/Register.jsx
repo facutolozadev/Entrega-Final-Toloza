@@ -1,4 +1,4 @@
-import React, { useEffect, useContext , useState  } from 'react'
+import React, { useEffect, useContext } from 'react'
 import './Register.css'
 import { useForm } from 'react-hook-form'
 import { LoginContext } from '../../context/LoginContext'
@@ -17,7 +17,7 @@ function Register() {
     }
 
     useEffect(() => {
-        if(loggedIn && error === ''){
+        if (loggedIn && error === '') {
             navigate('/')
         }
     }, [loggedIn, navigate, error])
@@ -79,13 +79,11 @@ function Register() {
                 {errors.password2?.type === 'minLength' && <p style={{ color: 'red', fontSize: "14px" }}>Debe contener al menos 4 caracteres</p>}
                 {errors.password2?.type === 'validate' && <p style={{ color: 'red', fontSize: "14px" }}>Las contraseñas no coinciden</p>}
 
-
                 {error === 'auth/email-already-in-use' && <p className="login__error">Email ya registrado</p>}
 
                 {error === 'auth/weak-password' && <p className="login__error">Tu contraseña es muy débil! Te recomendamos que contenga al menos 5 caracteres y un número</p>}
 
                 <Link className="register__link" to="/login">Ya tenés cuenta? Ingresá</Link>
-
 
                 <button type="submit">Registrarme</button>
             </form>

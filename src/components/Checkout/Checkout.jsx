@@ -64,7 +64,6 @@ function Checkout() {
         }
         <h3>Total a pagar: ${calcTotalPrice()}</h3>
       </div>
-
       <CheckoutForm
         setIsLoading={setIsLoading}
         cart={cart}
@@ -74,8 +73,6 @@ function Checkout() {
         user={user}
         logout={logout}
       />
-        
-      
     </div>
 
   )

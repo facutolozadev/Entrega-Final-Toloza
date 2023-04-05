@@ -39,7 +39,7 @@ const ItemListContainer = () => {
     <div className="products__page">
       {
         isLoading ? (
-          <Spinner message={"Cargando"}/>
+          <Spinner message={"Cargando"} />
         ) : (
           <>
             <h1>{categoryId ? categoryId.charAt(0).toUpperCase() + categoryId.slice(1) : "Nuestros productos"}</h1>

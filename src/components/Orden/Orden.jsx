@@ -51,7 +51,7 @@ function Orden() {
                 <h2>Gracias por comprar en Zdravý fitness!</h2>
             </div>
         </div>
-       
+
     )
 }
 

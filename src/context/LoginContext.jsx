@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { auth } from '../firebase/config'
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 
 
 
@@ -32,7 +32,6 @@ function LoginProvider({ children }) {
                     setError(error.code)
                 }
             })
-
     }
 
     const login = (data) => {

@@ -4,12 +4,11 @@ import './Navbar.css'
 import CartWidget from '../CartWidget/CartWidget'
 import { Link } from 'react-router-dom'
 import { LoginContext } from '../../context/LoginContext'
-import {RiLogoutBoxRLine} from 'react-icons/ri'
+import { RiLogoutBoxRLine } from 'react-icons/ri'
 
 const Navbar = () => {
 
-  const [isOpened, setIsOpened] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(null)
+  const [isOpened, setIsOpened] = useState(false)
 
   const { user, logout } = useContext(LoginContext)
 
@@ -37,15 +36,15 @@ const Navbar = () => {
         {
           user.logged
             ? <>
-                <strong>Bienvenido/a {user.email}</strong>
-                <RiLogoutBoxRLine 
+              <strong>Bienvenido/a {user.email}</strong>
+              <RiLogoutBoxRLine
                 onClick={logout}
-                className="nav__logout"/>
-              </>
+                className="nav__logout" />
+            </>
             : <>
-                <Link className="sing-in" to="/register">Registrarse</Link>
-                <Link className="login" to="/login">Ingresar</Link>
-              </>
+              <Link className="sing-in" to="/register">Registrarse</Link>
+              <Link className="login" to="/login">Ingresar</Link>
+            </>
         }
         <CartWidget />
         <i

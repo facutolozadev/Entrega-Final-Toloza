@@ -7,9 +7,8 @@ const init = JSON.parse(localStorage.getItem('carrito')) || [];
 export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState(init)
-    
+
     const isInCart = (id) => {
-        // console.log(id)
         return cart.some((item) => item.id === id)
     }
 
@@ -24,8 +23,8 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (item) => {
         if (isInCart(item.id)) {
-            item.cantidad < item.stock 
-            && setCart(cart.map((prod) => prod.id === item.id ? { ...prod, cantidad: prod.cantidad + 1 } : prod))
+            item.cantidad < item.stock
+                && setCart(cart.map((prod) => prod.id === item.id ? { ...prod, cantidad: prod.cantidad + 1 } : prod))
 
         } else {
             setCart([...cart, item])
@@ -47,7 +46,7 @@ export const CartProvider = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem('carrito', JSON.stringify(cart))
-    },[cart])
+    }, [cart])
 
     return (
         <CartContext.Provider value={{

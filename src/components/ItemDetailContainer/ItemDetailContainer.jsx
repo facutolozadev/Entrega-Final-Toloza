@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './ItemDetailContainer.css'
 import ItemDetail from './ItemDetail/ItemDetail'
 import { db } from '../../firebase/config'
-import { doc, getDoc} from 'firebase/firestore'
+import { doc, getDoc } from 'firebase/firestore'
 import Spinner from '../Spinner/Spinner'
 
 
@@ -21,23 +21,23 @@ function ItemDetailContainer() {
 
     getDoc(docRef)
       .then((res) => {
-        if(!res.data()) {
+        if (!res.data()) {
           navigate('/')
         }
-        const doc = {...res.data(), id: res.id}
+        const doc = { ...res.data(), id: res.id }
         setDetail(doc)
         setLoading(false)
-        
-      })  
-      
+
+      })
+
   }, [id])
 
- 
-  
+
+
   return (
     <div className="item__detail-container">
       {loading ? (
-        <Spinner message={"Cargando"}/>
+        <Spinner message={"Cargando"} />
       ) : (
         <ItemDetail detail={detail} />
       )
