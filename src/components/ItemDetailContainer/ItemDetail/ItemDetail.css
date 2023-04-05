@@ -79,6 +79,12 @@
 }
 
 
+.terminar__compra-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .terminar__compra{
     background: #FF5617;
     color: #fff;

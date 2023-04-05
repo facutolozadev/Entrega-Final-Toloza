@@ -28,9 +28,9 @@ function ItemDetail({ detail }) {
         {
           isInCart(detail.id)
             ? (
-              <div>
+              <div className="terminar__compra-container">
                 <Link className="terminar__compra" to="/cart">Terminar mi compra</Link>
-
+                <Link className="terminar__compra" to="/">Seguir comprando</Link>
               </div>
 
             ) : (
